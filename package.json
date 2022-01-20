@@ -1,6 +1,6 @@
 {
   "name": "@appidia/expo-light-image",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "LightImage performant Expo image component.",
   "main": "index.js",
   "dependencies": {
