@@ -1,0 +1,36 @@
+{
+  "name": "expo-light-image",
+  "version": "0.1.0",
+  "description": "LightImage performant Expo image component.",
+  "main": "index.js",
+  "dependencies": {
+    "crypto-js": "^4.1.1",
+    "expo": "~44.0.0",
+    "expo-file-system": "~13.1.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-native": "0.64.3",
+    "react-native-web": "0.17.1"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "keywords": [
+    "cache",
+    "cached",
+    "fastimage",
+    "image",
+    "priority"
+  ],
+  "author": "Firuz Haciyev (eleviven)",
+  "license": "ISC",
+  "homepage": "https://github.com/eleviven/expo-fast-image#readme",
+  "bugs": {
+    "url": "https://github.com/eleviven/expo-fast-image/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eleviven/expo-fast-image.git"
+  }
+}
