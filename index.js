@@ -31,7 +31,7 @@ const writeImageToCache = async (uri) => {
   }
 };
 
-const LightImage = ({ source, isBackground, ...props }) => {
+const LightImage = ({ source, isBackground, children, ...props }) => {
   const [imageUri, setImageUri] = useState(
     `${FileSystem.cacheDirectory}${sha256(source.uri)}`
   );
@@ -55,7 +55,9 @@ const LightImage = ({ source, isBackground, ...props }) => {
   return !isBackground ? (
     <Image source={{ uri: imageUri }} {...props} />
   ) : (
-    <ImageBackground source={{ uri: imageUri }} {...props} />
+    <ImageBackground source={{ uri: imageUri }} {...props}>
+      {children}
+    </ImageBackground>
   );
 };
 
