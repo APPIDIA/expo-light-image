@@ -31,9 +31,10 @@ const writeImageToCache = async (uri) => {
 };
 
 const LightImage = ({ source, isBackground, children, ...props }) => {
-  const [imageUri, setImageUri] = useState(
-    `${FileSystem.cacheDirectory}${sha256(source.uri)}`
-  );
+  const initialSource = source?.uri
+    ? `${FileSystem.cacheDirectory}${sha256(source.uri)}`
+    : source;
+  const [imageUri, setImageUri] = useState(initialSource);
 
   const load = async () => {
     const cachedResumable = await getCachedImage(source.uri);
@@ -46,7 +47,7 @@ const LightImage = ({ source, isBackground, children, ...props }) => {
   };
 
   useEffect(() => {
-    if (source.uri) {
+    if (source?.uri) {
       load();
     }
   }, [source]);
