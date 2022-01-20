@@ -2,6 +2,7 @@ import React, { memo, useEffect, useState } from "react";
 import { Image } from "react-native";
 import * as FileSystem from "expo-file-system";
 import sha256 from "crypto-js/sha256";
+import { ImageBackground } from "react-native-web";
 
 // check and get image from cache
 const getCachedImage = async (uri) => {
@@ -30,7 +31,7 @@ const writeImageToCache = async (uri) => {
   }
 };
 
-const LightImage = ({ source, ...props }) => {
+const LightImage = ({ source, isBackground, ...props }) => {
   const [imageUri, setImageUri] = useState(
     `${FileSystem.cacheDirectory}${sha256(source.uri)}`
   );
@@ -51,7 +52,15 @@ const LightImage = ({ source, ...props }) => {
     }
   }, [source]);
 
-  return <Image source={{ uri: imageUri }} {...props} />;
+  return !isBackground ? (
+    <Image source={{ uri: imageUri }} {...props} />
+  ) : (
+    <ImageBackground source={{ uri: imageUri }} {...props} />
+  );
+};
+
+LightImage.defaultProps = {
+  isBackground: false,
 };
 
 export default memo(LightImage);

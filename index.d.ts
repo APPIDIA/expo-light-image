@@ -1,4 +1,8 @@
 import React from "react";
 import { ImageProps } from "react-native";
 
-export default function ExpoFastImage(props: ImageProps): React.FC;
+export interface LightImageProps extends ImageProps {
+  isBackground?: Boolean;
+}
+
+export default function LightImage(props: LightImageProps): React.FC;
