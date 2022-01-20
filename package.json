@@ -24,13 +24,13 @@
     "priority"
   ],
   "author": "Firuz Haciyev (eleviven)",
-  "license": "ISC",
-  "homepage": "https://github.com/eleviven/expo-fast-image#readme",
+  "license": "MIT",
+  "homepage": "https://github.com/APPIDIA/expo-light-image#readme",
   "bugs": {
-    "url": "https://github.com/eleviven/expo-fast-image/issues"
+    "url": "https://github.com/APPIDIA/expo-light-imageissues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/eleviven/expo-fast-image.git"
+    "url": "https://github.com/APPIDIA/expo-light-image.git"
   }
 }
