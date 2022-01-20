@@ -1,8 +1,7 @@
 import React, { memo, useEffect, useState } from "react";
-import { Image } from "react-native";
+import { Image, ImageBackground } from "react-native";
 import * as FileSystem from "expo-file-system";
 import sha256 from "crypto-js/sha256";
-import { ImageBackground } from "react-native-web";
 
 // check and get image from cache
 const getCachedImage = async (uri) => {
