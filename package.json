@@ -1,5 +1,5 @@
 {
-  "name": "expo-light-image",
+  "name": "@appidia/expo-light-image",
   "version": "0.1.0",
   "description": "LightImage performant Expo image component.",
   "main": "index.js",

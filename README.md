@@ -21,15 +21,15 @@ Performant Expo image component.
 ## Usage
 
 ```bash
-yarn add expo-light-image
+yarn add @appidia/expo-light-image
 
 or
 
-npm install expo-light-image
+npm install @appidia/expo-light-image
 ```
 
 ```jsx
-import LightImage from "expo-light-image";
+import LightImage from "@appidia/expo-light-image";
 
 const YourImage = () => (
   <LightImage
