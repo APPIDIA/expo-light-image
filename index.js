@@ -43,6 +43,8 @@ const LightImage = ({ source, isBackground, children, ...props }) => {
       const { uri } = await writeImageToCache(source.uri);
       setImageUri(`${uri}/frc`);
       setImageUri(uri);
+    } else {
+      setImageUri(cachedResumable.uri);
     }
   };
 
