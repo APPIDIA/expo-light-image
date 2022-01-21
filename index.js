@@ -4,9 +4,8 @@ import * as FileSystem from "expo-file-system";
 import sha256 from "crypto-js/sha256";
 
 // check and get image from cache
-const getCachedImage = async (uri) => {
+const getCachedImage = async (digest) => {
   try {
-    const digest = sha256(uri);
     const image = await FileSystem.getInfoAsync(
       FileSystem.cacheDirectory + digest
     );
@@ -17,9 +16,8 @@ const getCachedImage = async (uri) => {
 };
 
 // write image to cache
-const writeImageToCache = async (uri) => {
+const writeImageToCache = async (uri, digest) => {
   try {
-    const digest = sha256(uri);
     const downloadResumable = FileSystem.createDownloadResumable(
       uri,
       `${FileSystem.cacheDirectory}${digest}`
@@ -31,16 +29,14 @@ const writeImageToCache = async (uri) => {
 };
 
 const LightImage = ({ source, isBackground, children, ...props }) => {
-  const [imageUri, setImageUri] = useState(
-    `${FileSystem.cacheDirectory}${sha256(source?.uri)}`
-  );
-  const imageSource = source?.uri ? { uri: imageUri } : source;
+  const digest = sha256(source?.uri);
+  const [imageUri, setImageUri] = useState(FileSystem.cacheDirectory + digest);
 
   const load = async () => {
-    const cachedResumable = await getCachedImage(source.uri);
+    const cachedResumable = await getCachedImage(digest);
 
     if (!cachedResumable.exists) {
-      const { uri } = await writeImageToCache(source.uri);
+      const { uri } = await writeImageToCache(source.uri, digest);
       setImageUri(`${uri}/frc`);
       setImageUri(uri);
     } else {
@@ -55,9 +51,12 @@ const LightImage = ({ source, isBackground, children, ...props }) => {
   }, [source]);
 
   return !isBackground ? (
-    <Image source={imageSource} {...props} />
+    <Image source={source?.uri ? { uri: imageUri } : source} {...props} />
   ) : (
-    <ImageBackground source={imageSource} {...props}>
+    <ImageBackground
+      source={source?.uri ? { uri: imageUri } : source}
+      {...props}
+    >
       {children}
     </ImageBackground>
   );
